@@ -38,14 +38,14 @@ function onLoad() {
     var email = $form.find('input[name="email"]').val();
     var room = $form.find('select[name="room"]').val();
     var date = $form.find('input[name="date"]').val();
-    var message = $form.find('input[name="message"]').val();
+    var message = $form.find('textarea[name="message"]').val();
 
     writeMessage({
-      name: name,
-      email: email,
-      room: room,
-      date: date,
-      message: message,
+      name: name || '',
+      email: email || '',
+      room: room || '',
+      date: date || '',
+      message: message || '',
       created_at: new Date().getTime(),
     });
   });
