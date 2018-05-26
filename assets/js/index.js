@@ -32,7 +32,9 @@ function writeMessage(data) {
 }
 
 function onLoad() {
-  $('#sendMessage').click(function() {
+  $('#messageForm').submit(function(event) {
+    event.preventDefault();
+
     var $form = $('#messageForm');
     var name = $form.find('input[name="name"]').val();
     var email = $form.find('input[name="email"]').val();
