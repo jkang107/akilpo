@@ -6,7 +6,7 @@
 //     response.end();
 // });
 // server.listen(8080);
-var firebase = require("firebase");
+// var firebase = require("firebase");
 
 var config = {
     apiKey: "AIzaSyCeub1Izit-VEtvHBZ3haLhpNxWTZiOAoo",
@@ -23,12 +23,12 @@ var database = firebase.database();
 
 function writeMessage(data) {
   // Get a key for a new Post.
-  var newMessageKey = firebase.database().ref().child('messages').push().key;
+  var newMessageKey = database.ref().child('messages').push().key;
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
   var updates = {};
   updates['/messages/' + newMessageKey] = data;
-  return firebase.database().ref().update(updates);
+  return database.ref().update(updates);
 }
 
 function onLoad() {
