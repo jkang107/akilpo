@@ -42,12 +42,16 @@ function onLoad() {
     var date = $form.find('input[name="date"]').val();
     var message = $form.find('textarea[name="message"]').val();
 
+    if (!!name || !!email || !!room || !!date) {
+      return false;
+    }
+
     writeMessage({
-      name: name || '',
-      email: email || '',
-      room: room || '',
-      date: date || '',
-      message: message || '',
+      name: name,
+      email: email,
+      room: room,
+      date: date,
+      message: message,
       created_at: new Date().getTime(),
     });
   });
