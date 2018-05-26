@@ -6,7 +6,6 @@
 //     response.end();
 // });
 // server.listen(8080);
-
 var firebase = require("firebase");
 
 var config = {
