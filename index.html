@@ -17,7 +17,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body>
+	<body onload="onLoad()">
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
@@ -163,7 +163,7 @@
 						<div class="inner">
 							<h2 class="major">Get in touch</h2>
 							<p>If you have questions or want to book, send this message freely!</p>
-							<form method="post" action="#">
+							<div id="messageForm">
 								<div class="field">
 									<label for="name">Name</label>
 									<input type="text" name="name" id="name" />
@@ -174,20 +174,26 @@
 								</div>
 								<div class="field">
 									<label for="room">Room type</label>
-									<input type="text" name="room" id="room" />
+									<select name="room" id="room">
+										<option disabled="true">select room type<option>
+										<option value="Twin Bed with Shared Bathroom">Twin Bed with Shared Bathroom</option>
+										<option value="Double Bed with Private Bathroom">Double Bed with Private Bathroom</option>
+										<option value="Twin Bed with Private Bathroom">Twin Bed with Private Bathroom</option>
+										<option value="Single Room with Shared Bathroom">Single Room with Shared Bathroom</option>
+									</select>
 								</div>
 								<div class="field">
-									<label for="room">Date</label>
-									<input type="text" name="room" id="room" />
+									<label for="date">Date</label>
+									<input type="text" name="date" id="date" />
 								</div>
 								<div class="field">
 									<label for="message">Message</label>
 									<textarea name="message" id="message" rows="4"></textarea>
 								</div>
 								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
+									<li><input id="sendMessage" type="submit" value="Send Message" /></li>
 								</ul>
-							</form>
+							</div>
 							<ul class="contact">
 								<li class="fa-home">
 									Parque Ginebra 30-B <br />
@@ -213,6 +219,16 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+			<script src="assets/js/index.js"></script>
+			<script src="/__/firebase/4.10.1/firebase-app.js"></script>
+	    <script src="/__/firebase/4.10.1/firebase-auth.js"></script>
+	    <script src="/__/firebase/4.10.1/firebase-database.js"></script>
+	    <script src="/__/firebase/4.10.1/firebase-messaging.js"></script>
 
+	    <!-- Leave out Storage -->
+	    <!-- <script src="/__/firebase/4.10.1/firebase-storage.js"></script> -->
+
+	    <script src="/__/firebase/init.js"></script>
 	</body>
 </html>
