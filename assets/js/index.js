@@ -28,7 +28,12 @@ function writeMessage(data) {
   // Write the new post's data simultaneously in the posts list and the user's post list.
   var updates = {};
   updates['/messages/' + newMessageKey] = data;
-  return database.ref().update(updates);
+
+  let myFirstPromise = new Promise((resolve, reject) => {
+    return database.ref().update(updates);
+  }).then((successMessage) => {
+    console.log("Yay! " + successMessage);
+  });
 }
 
 function onLoad() {
@@ -43,16 +48,14 @@ function onLoad() {
     var message = $form.find('textarea[name="message"]').val();
 
     if (!!name || !!email || !!room || !!date) {
-      return false;
+      writeMessage({
+        name: name,
+        email: email,
+        room: room,
+        date: date,
+        message: message,
+        created_at: new Date().getTime(),
+      });
     }
-
-    writeMessage({
-      name: name,
-      email: email,
-      room: room,
-      date: date,
-      message: message,
-      created_at: new Date().getTime(),
-    });
   });
 }
